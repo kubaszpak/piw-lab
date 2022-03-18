@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,900&display=swap"
+			rel="stylesheet"
+		/>
+		<link href="style.css" type="text/css" rel="stylesheet" />
+		<title>piw-lab-2</title>
+	</head>
+
+	<body>
+		<header>Todo App</header>
+		<main>
+			<form id="new-todo-form" name="new-todo-form" autocomplete="off">
+			<div id="new-todo">
+				<div class="field">
+					<input type="text" name="todo-text" id="todo-text" placeholder="Enter new todo..." />
+					<div class="line"></div>
+				</div>
+				<button type="submit">
+					<img
+						class="plus-icon"
+						src="assets/add.png"
+						alt="plus icon"
+					/>
+				</button>
+			</form>
+			</div>
+			<ul id="todos">
+				<!-- list injected via javascript -->
+			</ul>
+			<button id="restore" type="button" class="btn btn-dark btn-lg restore">Restore Last</br>Todo</button>
+			<div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title" id="todoModalLabel">Are you sure you want to delete this? 🕵️‍♂️</h5>
+					  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						You've been adding and deleting this task back and forth for the last 3 weeks. Get a grip on yourself!
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+					  <button id="deleteId" type="button" class="btn btn-primary">Delete</button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+		</main>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<script src="main.js"></script>
+	</body>
+</html>

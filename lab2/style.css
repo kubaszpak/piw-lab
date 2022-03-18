@@ -1,0 +1,150 @@
+body {
+	font-family: "Poppins", sans-serif;
+	background-color: rgb(36, 50, 58);
+}
+
+h2 {
+	font-size: 1.5em;
+	margin: 20px 0;
+	font-weight: bold;
+	line-height: 1.5;
+	text-align: left;
+}
+
+main {
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+header {
+	margin: 50px 0;
+	font-weight: 900;
+	font-style: italic;
+	text-align: center;
+	font-size: 3rem;
+	color: white;
+}
+
+button[type="submit"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#new-todo {
+	position: relative;
+	display: flex;
+	margin-bottom: 40px;
+}
+
+input {
+	background: 0;
+	border: 0;
+	outline: none;
+	width: 80vw;
+	font-family: "Poppins", sans-serif;
+	color: white;
+	max-width: 400px;
+	font-size: 1.5em;
+	transition: padding 0.3s ease;
+}
+
+input:focus {
+	padding-bottom: 5px;
+}
+
+.field {
+	position: relative;
+	display: flex;
+}
+
+.line {
+	width: 100%;
+	height: 3px;
+	position: absolute;
+	bottom: -8px;
+	background: #bdc3c7;
+}
+
+.line:after {
+	content: " ";
+	position: absolute;
+	float: right;
+	height: 3px;
+	width: 100%;
+	transform: scaleX(0);
+	transition: transform 0.3s ease;
+	background: #1abc9c;
+}
+
+input:focus + .line:after {
+	transform: scaleX(1);
+}
+
+.todo {
+	list-style: none;
+	color: white;
+	border: 1px solid white;
+	margin: 10px;
+	padding: 0 20px;
+	display: flex;
+	cursor: pointer;
+	justify-content: space-between;
+}
+
+.plus-icon {
+	filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(159deg)
+		brightness(105%) contrast(105%);
+	max-height: 50px;
+	margin-left: 20px;
+}
+
+#todos {
+	text-align: center;
+	/* max-width: 50vw; */
+	width: 70vw;
+	padding: 0;
+	max-width: 600px;
+}
+
+.x-icon {
+	position: relative;
+	transition: transform 0.5s ease;
+}
+
+.x-icon:hover {
+	filter: brightness(0) saturate(100%) invert(100%) sepia(84%) saturate(656%)
+		hue-rotate(162deg) brightness(105%) contrast(94%);
+	transform: translateY(-3px);
+}
+
+.crossed > * {
+	color: rgba(116, 116, 116, 0.5);
+}
+
+.crossed > div > h2 {
+	text-decoration: line-through;
+}
+
+.crossed > img {
+	display: none;
+}
+
+.crossed {
+	border: 1px solid rgba(116, 116, 116, 0.5);
+}
+
+.restore {
+	font-weight: bold;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	display: none;
+}

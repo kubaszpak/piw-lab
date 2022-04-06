@@ -1,25 +1,35 @@
-/* eslint-disable @typescript-eslint/no-useless-constructor */
 /* eslint-disable react/prefer-stateless-function */
 import React from "react";
-import { Group } from "../types";
+import { Group, Student } from "../types";
 
 interface Props {
   groupList: Group[];
 }
 
 class Groups extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-  }
-
   render() {
     const { groupList } = this.props;
     return (
-      <div>
+      <>
         {groupList.map((group) => {
-          return <div key={group.id}>Group {group.id}</div>;
+          return (
+            <div key={group.id}>
+              <h3>{group.name}</h3>
+              <p>{group.description}</p>
+              <p>{group.course}</p>
+              <div>
+                {group.students.map((student: Student) => {
+                  return (
+                    <div
+                      key={student.id}
+                    >{`${student.name} - ${student.description}`}</div>
+                  );
+                })}
+              </div>
+            </div>
+          );
         })}
-      </div>
+      </>
     );
   }
 }

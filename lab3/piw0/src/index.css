@@ -20,3 +20,7 @@ form {
 button {
   width: fit-content;
 }
+
+a {
+  margin-right: 10px;
+}

@@ -12,9 +12,9 @@ const groups: Group[] = [
   {
     id: 2,
     name: "Java scubas",
+    course: "Fullstack",
     description:
       "Our mission is to create the most secure backend for a Web Application!",
-    course: "Fullstack",
     students: [students[0], students[2]],
   },
 ];

@@ -38,6 +38,7 @@
     "react/jsx-uses-react": ["off"],
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-props-no-spreading": ["warn"],
-    "no-shadow": ["off"]
+    "no-shadow": ["off"],
+    "react/prefer-stateless-function": ["off"]
   }
 }

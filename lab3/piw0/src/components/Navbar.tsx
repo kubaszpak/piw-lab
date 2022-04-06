@@ -4,8 +4,9 @@ export default function Navbar() {
   return (
     <nav>
       <NavLink to="/">Students</NavLink>
-      <NavLink to="/create">Create ad</NavLink>
+      <NavLink to="/students/new">Create student</NavLink>
       <NavLink to="/groups">Groups</NavLink>
+      <NavLink to="/groups/new">Create group</NavLink>
     </nav>
   );
 }

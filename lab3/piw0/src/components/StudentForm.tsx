@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { StudentData, Tag } from "../types";
 
-interface AdProps {
+interface StudentFormProps {
   addStudentOffer: (student: StudentData) => void;
 }
 
-export default function Ad({ addStudentOffer }: AdProps) {
+export default function StudentForm({ addStudentOffer }: StudentFormProps) {
   const initialFormData: StudentData = {
     name: "",
     email: "",
@@ -31,6 +31,7 @@ export default function Ad({ addStudentOffer }: AdProps) {
           type="email"
           name="email"
           id="email"
+          required
           placeholder="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}

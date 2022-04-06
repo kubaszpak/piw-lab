@@ -4,7 +4,7 @@ const students: Student[] = [
   {
     id: 1,
     name: "Kuba",
-    course: "PIW - Programowanie Interfejów Webowych",
+    course: "PIW",
     description: "Looking for a cool Web Project to start!",
     tags: [
       { id: 1, name: "web" },
@@ -16,7 +16,7 @@ const students: Student[] = [
   {
     id: 2,
     name: "Tomek",
-    course: "PiPG - Projektowanie i Programowanie Gier",
+    course: "PiPG",
     description:
       "I am looking for a group of ambitious students who would be interested in choosing a game development related subject!",
     tags: [
@@ -28,7 +28,7 @@ const students: Student[] = [
   {
     id: 3,
     name: "Piotrek",
-    course: "PZ - Projekt Zespołowy",
+    course: "PZ",
     description: "Let's do as little as possible and pass!",
     tags: [{ id: 1, name: "piwo" }],
     email: "piotek@gmail.com",

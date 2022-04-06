@@ -9,6 +9,7 @@ import { Group, GroupData, Student, StudentData } from "./types";
 import groups from "./groups";
 import Layout from "./components/Layout";
 import GroupForm from "./components/GroupForm";
+import Message from "./components/Message";
 
 function App() {
   const [studentList, setStudentList] = useState<Student[]>(students);
@@ -48,6 +49,7 @@ function App() {
             />
           }
         />
+        <Route path="message/*" element={<Message />} />
       </Route>
     </Routes>
   );

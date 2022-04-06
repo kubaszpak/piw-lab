@@ -5,7 +5,7 @@ interface HomeProps {
   studentList: Student[];
 }
 
-export default function Home({ studentList }: HomeProps) {
+export default function Students({ studentList }: HomeProps) {
   const [filter, setFilter] = useState("");
 
   return (
@@ -40,7 +40,7 @@ export default function Home({ studentList }: HomeProps) {
               <ul>
                 <h3>Tags:</h3>
                 {student.tags.map((tag) => {
-                  return <li key={tag.id}>{tag.name}</li>;
+                  return tag.name && <li key={tag.id}>{tag.name}</li>;
                 })}
               </ul>
             </div>

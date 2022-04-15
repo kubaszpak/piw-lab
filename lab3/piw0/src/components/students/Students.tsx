@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Student, Tag } from "../types";
+import { Student, Tag } from "../../types";
 
 interface HomeProps {
   studentList: Student[];

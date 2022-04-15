@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { StudentData, Tag } from "../types";
+import { StudentData, Tag } from "../../types";
+import FormObjectItem from "../general/FormObjectItem";
 
 interface StudentFormProps {
   addStudentOffer: (student: StudentData) => void;
@@ -25,18 +26,12 @@ export default function StudentForm({ addStudentOffer }: StudentFormProps) {
 
   return (
     <form onSubmit={handleSubmitAd}>
-      <label htmlFor="email">
-        Email
-        <input
-          type="email"
-          name="email"
-          id="email"
-          required
-          placeholder="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-        />
-      </label>
+      <FormObjectItem
+        name="email"
+        formData={formData}
+        valueSetter={setFormData}
+        type="email"
+      />
       <label htmlFor="name">
         Name
         <input

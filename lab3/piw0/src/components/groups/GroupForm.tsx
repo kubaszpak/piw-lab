@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { GroupData, Student } from "../types";
+import { GroupData, Student } from "../../types";
+import FormItem from "../general/FormItem";
 
 interface GroupFormProps {
   studentList: Student[];
@@ -25,42 +26,14 @@ export default function GroupForm({
 
   return (
     <form onSubmit={handleSubmitAd}>
-      <label htmlFor="name">
-        Name
-        <input
-          type="name"
-          name="name"
-          id="name"
-          placeholder="name"
-          value={name}
-          required
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <label htmlFor="course">
-        Course
-        <input
-          required
-          type="text"
-          name="course"
-          id="course"
-          placeholder="course"
-          value={course}
-          onChange={(e) => setCourse(e.target.value)}
-        />
-      </label>
-      <label htmlFor="description">
-        Description
-        <input
-          required
-          type="textarea"
-          name="description"
-          id="description"
-          placeholder="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </label>
+      <FormItem name="name" value={name} valueSetter={setName} />
+      <FormItem name="course" value={course} valueSetter={setCourse} />
+      <FormItem
+        name="description"
+        value={description}
+        valueSetter={setDescription}
+        type="textarea"
+      />
       <h3>Students: </h3>
       {studentList.map((student) => {
         return (

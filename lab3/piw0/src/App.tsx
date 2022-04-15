@@ -1,21 +1,34 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
-import Students from "./components/Students";
-import Groups from "./components/Groups";
-import students from "./students";
-import StudentForm from "./components/StudentForm";
+import { useEffect, useState } from "react";
+import Students from "./components/students/Students";
+import Groups from "./components/groups/Groups";
+import StudentForm from "./components/students/StudentForm";
 import { Group, GroupData, Student, StudentData } from "./types";
-import groups from "./groups";
-import Layout from "./components/Layout";
-import GroupForm from "./components/GroupForm";
+import Layout from "./components/layout/Layout";
+import GroupForm from "./components/groups/GroupForm";
 import Message from "./components/Message";
+import fetchStudents from "./api/StudentsService";
+import fetchGroups from "./api/GroupsService";
 
 function App() {
-  const [studentList, setStudentList] = useState<Student[]>(students);
-  const [studentCount, setStudentCount] = useState<number>(students.length + 1);
-  const [groupList, setGroupList] = useState<Group[]>(groups);
-  const [groupCount, setGroupCount] = useState<number>(groups.length + 1);
+  const [studentList, setStudentList] = useState<Student[]>([]);
+  const [studentCount, setStudentCount] = useState<number>(0);
+  const [groupList, setGroupList] = useState<Group[]>([]);
+  const [groupCount, setGroupCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const students = await fetchStudents();
+      setStudentList(students);
+      setStudentCount(students.length + 1);
+
+      const groups = await fetchGroups();
+      setGroupList(groups);
+      setGroupCount(groups.length + 1);
+    };
+    fetchData();
+  }, []);
 
   const addStudentOffer = (student: StudentData) => {
     setStudentList(studentList.concat({ id: studentCount, ...student }));

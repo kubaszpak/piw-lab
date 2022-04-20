@@ -4,6 +4,7 @@ export interface StudentData {
   tags: Tag[];
   course: string;
   email: string;
+  img: string;
 }
 
 export interface Student extends StudentData {

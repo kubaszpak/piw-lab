@@ -2,13 +2,13 @@ import { Dispatch, SetStateAction } from "react";
 import { StudentData } from "../../types";
 
 interface FormObjectItemProps {
-  name: string;
+  name: Exclude<keyof StudentData, "tags">;
   formData: StudentData;
-  valueSetter: Dispatch<SetStateAction<any>>;
+  valueSetter: Dispatch<SetStateAction<StudentData>>;
   type?: string;
 }
 
-function FormObjectItem({
+function FormObjectPartItem({
   name,
   formData,
   valueSetter,
@@ -23,19 +23,19 @@ function FormObjectItem({
         id={name}
         required
         placeholder={name}
-        value={(formData as any)[name]}
+        value={formData[name]}
         onChange={(e) => {
-          // const newFormData = formData.splice();
-          // TODO set value manually and use it in setState
-          valueSetter({ ...formData, name: e.target.value });
+          const newFormData = { ...formData };
+          newFormData[name] = e.target.value;
+          valueSetter(newFormData);
         }}
       />
     </label>
   );
 }
 
-FormObjectItem.defaultProps = {
+FormObjectPartItem.defaultProps = {
   type: "text",
 };
 
-export default FormObjectItem;
+export default FormObjectPartItem;

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import getRandomImage from "../../api/RandomImageGenerator";
 import { StudentData, Tag } from "../../types";
-import FormObjectItem from "../general/FormObjectItem";
+import FormObjectPartItem from "../general/FormObjectPartItem";
 
 interface StudentFormProps {
   addStudentOffer: (student: StudentData) => void;
@@ -13,6 +14,7 @@ export default function StudentForm({ addStudentOffer }: StudentFormProps) {
     course: "",
     description: "",
     tags: [],
+    img: "",
   };
   const [tagCounter, setTagCounter] = useState<number>(0);
   const [formData, setFormData] = useState<StudentData>({ ...initialFormData });
@@ -24,52 +26,36 @@ export default function StudentForm({ addStudentOffer }: StudentFormProps) {
     setTagCounter(0);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setFormData({ ...formData, img: await getRandomImage() });
+    };
+    fetchData();
+  }, []);
+
   return (
     <form onSubmit={handleSubmitAd}>
-      <FormObjectItem
+      <FormObjectPartItem
         name="email"
         formData={formData}
         valueSetter={setFormData}
         type="email"
       />
-      <label htmlFor="name">
-        Name
-        <input
-          required
-          type="text"
-          name="name"
-          id="name"
-          placeholder="name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        />
-      </label>
-      <label htmlFor="course">
-        Course
-        <input
-          required
-          type="text"
-          name="course"
-          id="course"
-          placeholder="course"
-          value={formData.course}
-          onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-        />
-      </label>
-      <label htmlFor="description">
-        Description
-        <input
-          required
-          type="textarea"
-          name="description"
-          id="description"
-          placeholder="description"
-          value={formData.description}
-          onChange={(e) =>
-            setFormData({ ...formData, description: e.target.value })
-          }
-        />
-      </label>
+      <FormObjectPartItem
+        name="name"
+        formData={formData}
+        valueSetter={setFormData}
+      />
+      <FormObjectPartItem
+        name="course"
+        formData={formData}
+        valueSetter={setFormData}
+      />
+      <FormObjectPartItem
+        name="description"
+        formData={formData}
+        valueSetter={setFormData}
+      />
       {formData.tags.map((el) => {
         return (
           <div key={el.id}>

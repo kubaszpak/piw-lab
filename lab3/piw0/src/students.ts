@@ -12,6 +12,7 @@ const students: Student[] = [
       { id: 3, name: "angular" },
     ],
     email: "kuba@gmail.com",
+    img: "",
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const students: Student[] = [
       { id: 2, name: "unity" },
     ],
     email: "tomek@gmail.com",
+    img: "",
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const students: Student[] = [
     description: "Let's do as little as possible and pass!",
     tags: [{ id: 1, name: "piwo" }],
     email: "piotek@gmail.com",
+    img: "",
   },
 ];
 

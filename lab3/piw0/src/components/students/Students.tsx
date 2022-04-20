@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Student, Tag } from "../../types";
+import StudentInfo from "./StudentInfo";
 
 interface HomeProps {
   studentList: Student[];
@@ -8,7 +8,6 @@ interface HomeProps {
 
 export default function Students({ studentList }: HomeProps) {
   const [filter, setFilter] = useState("");
-  const navigate = useNavigate();
 
   return (
     <form>
@@ -34,28 +33,7 @@ export default function Students({ studentList }: HomeProps) {
           );
         })
         .map((student: Student) => {
-          return (
-            // eslint-disable-next-line jsx-a11y/anchor-is-valid
-            <div key={student.id}>
-              <button
-                type="button"
-                className="link"
-                onClick={() => {
-                  navigate(`/message/student/${student.id}`);
-                }}
-              >
-                <h1>{student.name}</h1>
-              </button>
-              <h2>{student.course}</h2>
-              <h3>{student.description}</h3>
-              <ul>
-                <h3>Tags:</h3>
-                {student.tags.map((tag) => {
-                  return tag.name && <li key={tag.id}>{tag.name}</li>;
-                })}
-              </ul>
-            </div>
-          );
+          return <StudentInfo key={student.id} student={student} />;
         })}
     </form>
   );

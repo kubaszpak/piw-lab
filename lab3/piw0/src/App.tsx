@@ -10,6 +10,8 @@ import GroupForm from "./components/groups/GroupForm";
 import Message from "./components/Message";
 import fetchStudents from "./api/StudentsService";
 import fetchGroups from "./api/GroupsService";
+import StudentInfo from "./components/students/StudentInfo";
+import GroupInfo from "./components/groups/GroupInfo";
 
 function App() {
   const [studentList, setStudentList] = useState<Student[]>([]);
@@ -62,7 +64,32 @@ function App() {
             />
           }
         />
-        <Route path="message/*" element={<Message />} />
+        <Route
+          path="message/student/:id"
+          element={
+            <Message to="student">
+              {(id) => {
+                return (
+                  <StudentInfo
+                    student={studentList.filter((s) => s.id === id)[0]}
+                  />
+                );
+              }}
+            </Message>
+          }
+        />
+        <Route
+          path="message/group/:id"
+          element={
+            <Message to="group">
+              {(id) => {
+                return (
+                  <GroupInfo group={groupList.filter((g) => g.id === id)[0]} />
+                );
+              }}
+            </Message>
+          }
+        />
       </Route>
     </Routes>
   );

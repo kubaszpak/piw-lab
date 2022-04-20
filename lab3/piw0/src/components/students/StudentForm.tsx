@@ -28,7 +28,8 @@ export default function StudentForm({ addStudentOffer }: StudentFormProps) {
 
   useEffect(() => {
     const fetchData = async () => {
-      setFormData({ ...formData, img: await getRandomImage() });
+      const randomImageURL = await getRandomImage();
+      setFormData((data) => ({ ...data, img: randomImageURL }));
     };
     fetchData();
   }, []);

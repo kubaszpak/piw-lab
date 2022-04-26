@@ -18,7 +18,8 @@
         "name": "angular"
       }
     ],
-    "email": "kuba@gmail.com"
+    "email": "kuba@gmail.com",
+    "img": "https://i.picsum.photos/id/849/70/100.jpg?hmac=iHUNUA5HrFbzT-5l-2yp-nHMnsJE_hTMvWcapoAZ6EU"
   },
   {
     "id": 2,
@@ -35,7 +36,8 @@
         "name": "unity"
       }
     ],
-    "email": "tomek@gmail.com"
+    "email": "tomek@gmail.com",
+    "img": "https://i.picsum.photos/id/1045/70/100.jpg?hmac=uhUGz7CGfUC0_vSo24ga8qAvhoP7P23RL-91O3Fs7fY"
   },
   {
     "id": 3,
@@ -48,6 +50,7 @@
         "name": "piwo"
       }
     ],
-    "email": "piotek@gmail.com"
+    "email": "piotek@gmail.com",
+    "img": "https://i.picsum.photos/id/445/70/100.jpg?hmac=JsnLPzr7JcnDfjQx9KMOpC0db0DNqxUIsWp0NjL9Whk"
   }
 ]

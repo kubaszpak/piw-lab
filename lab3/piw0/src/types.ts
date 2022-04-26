@@ -26,3 +26,8 @@ export interface GroupData {
 export interface Group extends GroupData {
   id: number;
 }
+
+export interface User {
+  login: string;
+  password: string;
+}

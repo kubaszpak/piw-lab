@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import LoggedUserContext from "../../contexts/LoggedUserContext";
 import { User } from "../../types";
 import FormItem from "../general/FormItem";
+import { loginWithFacebook, logInWithGoogle } from "../../firebase/users";
 
 interface Props {
   usersList: User[];
@@ -30,16 +31,24 @@ export default function Login({ usersList }: Props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <FormItem name="login" value={formLogin} valueSetter={setFormLogin} />
-      <FormItem
-        name="password"
-        value={formPassword}
-        valueSetter={setFormPassword}
-        type="password"
-      />
-      {error && <div style={{ color: "red" }}>{error}</div>}
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <FormItem name="login" value={formLogin} valueSetter={setFormLogin} />
+        <FormItem
+          name="password"
+          value={formPassword}
+          valueSetter={setFormPassword}
+          type="password"
+        />
+        {error && <div style={{ color: "red" }}>{error}</div>}
+        <button type="submit">Submit</button>
+      </form>
+      <button type="button" onClick={logInWithGoogle}>
+        Login with Google
+      </button>
+      <button type="button" onClick={loginWithFacebook}>
+        Login with Facebook
+      </button>
+    </>
   );
 }

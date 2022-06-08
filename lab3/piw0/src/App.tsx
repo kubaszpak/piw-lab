@@ -1,6 +1,8 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import type { AppUser } from "./contexts/LoggedUserContext";
 import Students from "./components/students/Students";
 import Groups from "./components/groups/Groups";
 import StudentForm from "./components/students/StudentForm";
@@ -15,15 +17,18 @@ import GroupInfo from "./components/groups/GroupInfo";
 import Login from "./components/auth/Login";
 import LoggedUserContext from "./contexts/LoggedUserContext";
 import Register from "./components/auth/Register";
+import { auth } from "./firebase/firebase";
+import { logout } from "./firebase/users";
 
 function App() {
-  const [loggedUser, setLoggedUser] = useState<User | null>(null);
+  const [loggedUser, setLoggedUser] = useState<AppUser>(null);
   const value = useMemo(() => ({ loggedUser, setLoggedUser }), [loggedUser]);
   const [studentList, setStudentList] = useState<Student[]>([]);
   const [studentCount, setStudentCount] = useState<number>(0);
   const [groupList, setGroupList] = useState<Group[]>([]);
   const [groupCount, setGroupCount] = useState<number>(0);
   const [usersList, setUsersList] = useState<User[]>([]);
+  const [loggedInUser] = useAuthState(auth);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +43,10 @@ function App() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    setLoggedUser(loggedInUser);
+  }, [loggedInUser]);
+
   const addStudentOffer = (student: StudentData) => {
     setStudentList(studentList.concat({ id: studentCount, ...student }));
     setStudentCount(studentCount + 1);
@@ -49,6 +58,7 @@ function App() {
   };
 
   const handleLogout = () => {
+    logout();
     setLoggedUser(null);
   };
 
